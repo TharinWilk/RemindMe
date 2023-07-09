@@ -1,0 +1,18 @@
+{
+  "name": "refocus",
+  "productName": "refocus",
+  "version": "1.0.0",
+  "description": "Reminder of what your focus should be",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Tharin Wilk",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^25.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}

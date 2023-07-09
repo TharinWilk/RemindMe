@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <title>Refocus</title>
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="js/renderer.js" type="module" defer></script>
+    <script src="js/web-components/file-svg-component.js" type="module" defer></script>
+    <script src="js/web-components/settings-svg-component.js" type="module" defer></script>
+  </head>
+  <body class="bg-gray-950 overflow-hidden">
+    <main class="h-screen flex flex-col items-center gap-12 py-8">
+      <!-- Header Section -->
+      <section class="w-full relative text-center">
+        <h1 class="text-sky-400 text-4xl">Refocus</h1>
+
+        <!-- Navigation -->
+        <nav class="absolute top-1.5 right-0 px-4 flex items-center gap-4">
+          <button id="list-button" class="icon-button">
+            <file-svg class="block w-7 h-7"></file-svg>
+          </button>
+          <button id="timer-button" class="icon-button">
+            <settings-svg class="block w-7 h-7"></settings-svg>
+          </button>
+        </nav>
+      </section>
+
+      <!-- List Section -->
+      <section id="list-section" class="flex flex-col flex-grow w-full items-center gap-12 duration-300">
+        <article class="flex flex-col items-center gap-4">
+          <label for="focus-item" class="self-start">Reminder Message</label>
+          <input
+            name="focus-item"
+            placeholder="Add new focus item"
+            class="w-[50vw] py-2 px-4 border rounded-md resize-none bg-sky-950 border-none"
+          ></input>
+          <button id="addButton" class="button">Add</button>
+        </article>
+  
+        <article class="flex-grow w-full px-5">
+          <ul id="focusMessages" class="duration-300 h-48 overflow-y-auto custom-scrollbar pl-5"></ul>
+        </article>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings-section" class="hidden fade-out flex-col flex-grow w-full items-start gap-12 duration-300 px-8">
+        <div class="w-full flex items-center gap-2">
+          <label id="time-label" for="time-slider" class="w-36">Time (5 minutes)</label>
+          <input class="w-1/2" name="time-slider" type="range" min="5" max="120" step="5" value="5">
+        </div>
+
+        <div class="w-full flex justify-center">
+          <button id="settings-button" class="button">Save Settings</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
