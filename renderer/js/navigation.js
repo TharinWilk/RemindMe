@@ -5,7 +5,19 @@ export default document.addEventListener("DOMContentLoaded", () => {
   const settingsSection = document.getElementById("settings-section");
 
   // Function to toggle visibility of sections with fade effect
+  let isActive = false;
+
   const toggleSections = async (currentSection, nextSection) => {
+    // Disable functionality if already transitioning
+    if (isActive) {
+      return;
+    }
+
+    isActive = true;
+    setTimeout(() => {
+      isActive = false;
+    }, 600);
+
     // Fade Out Current Section
     await new Promise((resolve) => {
       currentSection.addEventListener("transitionend", () => {
