@@ -35,35 +35,46 @@ function createMainWindow() {
   mainWindow.loadFile(path.join(__dirname, "./renderer/index.html"));
 }
 
-// const NOTIFICATION_TITLE = "Basic Notification";
-// const NOTIFICATION_BODY = "Notification from the Main process";
 const notificationTitle = "Reminder";
 let notificationMessage = "Remember to set a reminder.";
 let notificationSettings = { timeout: 10000 };
 let notificationInterval;
 
-const toastXml = () => {
+const toastXml = (message) => {
   return `
   <toast>
     <visual>
       <binding template="ToastText02">
         <text id="1">${notificationTitle}</text>
-        <text id="2">${notificationMessage}</text>
+        <text id="2">${message}</text>
       </binding>
     </visual>
   </toast>`;
 };
 
+let list = null;
 const showNotification = () => {
+  let notificationMessage;
+
+  if (notificationSettings.reminderIndex === "RANDOM") {
+    // Generate a random index within the range of the list array
+    const randomIndex = Math.floor(Math.random() * list.length);
+    notificationMessage = list[randomIndex];
+  } else {
+    // Get the reminder index from the settings object
+    const reminderIndex = notificationSettings.reminderIndex;
+    notificationMessage = list[reminderIndex];
+  }
+
   return new Notification({
-    toastXml: toastXml(),
+    toastXml: toastXml(notificationMessage),
   });
 };
 
 app.whenReady().then(() => {
   ipcMain.on("set-list", (event, data) => {
     if (data.length > 0) {
-      notificationMessage = data[0];
+      list = data;
     } else {
       notificationMessage = "Remember to set a reminder.";
     }
@@ -95,7 +106,7 @@ app.whenReady().then(() => {
 
   mainWindow.show();
 
-  // Create a notification every 30 seconds
+  // Create a notification
   notificationInterval = setInterval(() => {
     let notification = showNotification();
     notification.show();
