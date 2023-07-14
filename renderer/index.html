@@ -51,6 +51,24 @@
           <input class="w-1/2" name="time-slider" type="range" min="5" max="120" step="5" value="5">
         </div>
 
+        <div>
+          <div class="flex items-center gap-4">
+            <label class="w-36" for="reminder-toggle">Single Reminder</label>
+            <input id="reminder-toggle" type="checkbox">
+          </div>
+          
+          <div class="mt-1 ml-4">
+            <div id="reminder-fieldset" class="hidden">
+              <label for="reminder-select" class="sr-only">Reminder Selected</label>
+              <select id="reminder-select" class="bg-sky-800 py-1 px-2 rounded-md">
+                <option value="" class="!hover:bg-slate-400">one</option>
+                <option value="">two</option>
+                <option value="">This is a lond test select option</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="w-full flex justify-center">
           <button id="settings-button" class="button">Save Settings</button>
         </div>
