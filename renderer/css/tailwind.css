@@ -43,6 +43,11 @@
     @apply w-fit py-0 px-2 rounded-md bg-sky-800 my-2;
   }
 
+  .button,
+  .button-sm {
+    @apply hover:bg-blue-600 duration-200 hover:-translate-y-[0.125rem] active:duration-75 active:translate-y-0 active:outline-offset-0;
+  }
+
   .list-item {
     @apply duration-300 max-h-9;
   }

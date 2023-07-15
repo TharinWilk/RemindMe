@@ -647,6 +647,27 @@ input[type="checkbox"]:checked {
   padding-right: 0.5rem;
 }
 
+.button,
+  .button-sm {
+  transition-duration: 200ms;
+}
+
+.button:hover,
+  .button-sm:hover {
+  --tw-translate-y: -0.125rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.button:active,
+  .button-sm:active {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  outline-offset: 0px;
+  transition-duration: 75ms;
+}
+
 .list-item {
   max-height: 2.25rem;
   transition-duration: 300ms;
@@ -932,9 +953,4 @@ input[type="checkbox"]:checked {
   font-weight: 400;
 
   src: url("../../assets/fonts/Belanosima-Regular.ttf") format("truetype");
-}
-
-.hover\:bg-slate-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
