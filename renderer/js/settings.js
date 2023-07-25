@@ -1,3 +1,5 @@
+import { setNotificationInterval } from "./notification.js";
+
 export default document.addEventListener("DOMContentLoaded", () => {
   let settings = {
     timeout: 60000,
@@ -9,7 +11,8 @@ export default document.addEventListener("DOMContentLoaded", () => {
 
     if (storedSettings) {
       settings = JSON.parse(storedSettings);
-      window.electronAPI.updateSettings(settings);
+
+      setNotificationInterval();
     } else {
       const jsonSettings = JSON.stringify(settings);
       localStorage.setItem("settings", jsonSettings);
@@ -80,6 +83,6 @@ export default document.addEventListener("DOMContentLoaded", () => {
 
   saveButton.addEventListener("click", () => {
     localStorage.setItem("settings", JSON.stringify(settings));
-    window.electronAPI.updateSettings(settings);
+    setNotificationInterval();
   });
 });

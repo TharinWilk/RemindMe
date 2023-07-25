@@ -18,7 +18,6 @@ const selectMessage = () => {
 // Function to show a notification (to be defined later).
 export const showNotification = (customMessage) => {
   if (customMessage) {
-    console.log("notification.js is working");
     window.electronAPI.showNotification(customMessage);
     return;
   }

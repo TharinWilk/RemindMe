@@ -7,7 +7,6 @@ export default document.addEventListener("DOMContentLoaded", () => {
     const parsedList = JSON.parse(jsonList);
 
     list.push(...parsedList);
-    window.electronAPI.sendList(list);
   };
 
   window.addEventListener("load", () => {
@@ -19,8 +18,6 @@ export default document.addEventListener("DOMContentLoaded", () => {
   const setStoredList = () => {
     const jsonList = JSON.stringify(list);
     localStorage.setItem("list", jsonList);
-
-    window.electronAPI.sendList(list);
   };
 
   // Handle DOM Manipulation
