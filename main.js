@@ -57,6 +57,10 @@ const showNotification = (notificationMessage) => {
   notification.show();
 };
 
+app.setLoginItemSettings({
+  openAtLogin: true,
+});
+
 app.whenReady().then(() => {
   ipcMain.on("show-notification", (event, data) => {
     showNotification(data);
